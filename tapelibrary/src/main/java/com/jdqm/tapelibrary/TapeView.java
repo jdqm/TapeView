@@ -133,8 +133,8 @@ public class TapeView extends View {
 
     private void calculateAttr() {
         textY = calibrationLong + DisplayUtil.dp2px(30, mContext);
-        offset = (minValue - value) * 10.0f / per * gapWidth;
-        maxOffset = (minValue - maxValue) * 10.0f / per * gapWidth;
+        offset = (value - minValue) * 10.0f / per * gapWidth;
+        maxOffset = (maxValue - minValue) * 10.0f / per * gapWidth;
         totalCalibration = (int) ((maxValue - minValue) * 10.0f / per + 1);
     }
 
@@ -199,6 +199,11 @@ public class TapeView extends View {
         drawTriangle(canvas);
     }
 
+    /**
+     * 由于没有画三角形的api，这里通过ath来构造
+     *
+     * @param canvas
+     */
     private void drawTriangle(Canvas canvas) {
         paint.setColor(triangleColor);
         Path path = new Path();
@@ -222,18 +227,18 @@ public class TapeView extends View {
         String value;
 
         //计算出左边第一个刻度，直接跳过前面不需要画的可读
-        int distance = (int) (middle + offset);
+        int distance = (int) (middle - offset);
         int left = 0;
         if (distance < 0) {
             left = (int) (-distance / gapWidth);
         }
-        currentCalibration = middle + offset + left * gapWidth;
+        currentCalibration = middle - offset + left * gapWidth;
         while (currentCalibration < width * 10 && left < totalCalibration) {
 
             //边缘的一根刻度不画
             if (currentCalibration == 0) {
                 left++;
-                currentCalibration = middle + offset + left * gapWidth;
+                currentCalibration = middle - offset + left * gapWidth;
                 continue;
             }
             if (left % perCount == 0) {
@@ -253,7 +258,7 @@ public class TapeView extends View {
             canvas.drawLine(currentCalibration, 0, currentCalibration, height, paint);
 
             left++;
-            currentCalibration = middle + offset + left * gapWidth;
+            currentCalibration = middle - offset + left * gapWidth;
         }
     }
 
@@ -290,16 +295,16 @@ public class TapeView extends View {
      * 滑动结束后，若是指针在2条刻度之间时，需要让指针指向最近的可读
      */
     private void smoothMoveToCalibration() {
-        offset -= dx;
-        if (offset <= maxOffset) {
-            offset = maxOffset;
-        } else if (offset >= 0) {
+        offset += dx;
+        if (offset < 0) {
             offset = 0;
+        } else if (offset > maxOffset) {
+            offset = maxOffset;
         }
         lastX = 0;
         dx = 0;
         value = minValue + Math.round(Math.abs(offset) / gapWidth) * per / 10.0f;
-        offset = (minValue - value) * 10.0f / per * gapWidth;
+        offset = (value - minValue) * 10.0f / per * gapWidth;
         if (onValueChangeListener != null) {
             onValueChangeListener.onChange(value);
         }
@@ -320,13 +325,13 @@ public class TapeView extends View {
 
 
     private void validateValue() {
-        offset -= dx;
-        if (offset <= maxOffset) {
-            offset = maxOffset;
+        offset += dx;
+        if (offset < 0) {
+            offset = 0;
             dx = 0;
             scroller.forceFinished(true);
-        } else if (offset >= 0) {
-            offset = 0;
+        } else if (offset > maxOffset) {
+            offset = maxOffset;
             dx = 0;
             scroller.forceFinished(true);
         }

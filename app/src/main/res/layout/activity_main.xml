@@ -27,7 +27,7 @@
         android:layout_marginTop="20dp"
         android:id="@+id/tapeView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         app:calibrationWidth="1dp"
         app:maxValue="200"
         app:minValue="40"
