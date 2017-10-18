@@ -20,11 +20,12 @@ public class MainActivity extends Activity implements TapeView.OnValueChangeList
         textView = findViewById(R.id.tvValue);
         tapeView = findViewById(R.id.tapeView);
         tapeView.setOnValueChangeListener(this);
-        tapeView.setValue(165, 80,250, 1);
+        //tapeView.setValue(65, 40.7f, 200, 0.1f, 10);
+        textView.setText(tapeView.getValue() + " 公斤");
     }
 
     @Override
     public void onChange(float value) {
-        textView.setText(String.valueOf(value));
+        textView.setText(value + "公斤");
     }
 }

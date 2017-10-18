@@ -6,7 +6,8 @@
 
         <attr name="calibrationColor" format="color|reference"></attr>
         <attr name="calibrationWidth" format="dimension|reference"></attr>
-        <attr name="calibrationHeight" format="dimension|reference"></attr>
+        <attr name="calibrationShort" format="dimension|reference"></attr>
+        <attr name="calibrationLong" format="dimension|reference"></attr>
 
         <attr name="triangleColor" format="string|reference"></attr>
         <attr name="triangleHeight" format="dimension|reference"></attr>
@@ -16,6 +17,7 @@
 
         <!--每一隔的所代表的数值-->
         <attr name="per" format="float|reference"></attr>
+        <attr name="perCount" format="integer"></attr>
         <attr name="gapWidth" format="dimension|reference"></attr>
         <attr name="minValue" format="float"></attr>
         <attr name="maxValue" format="float"></attr>
