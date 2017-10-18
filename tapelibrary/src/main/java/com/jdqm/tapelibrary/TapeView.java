@@ -48,9 +48,6 @@ public class TapeView extends View {
     //当前View的宽度
     private int width;
 
-    //当前View的高度
-    private int height;
-
     //宽度的中间值
     private int middle;
 
@@ -166,12 +163,11 @@ public class TapeView extends View {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         width = MeasureSpec.getSize(widthMeasureSpec);
         middle = width / 2;
-        height = MeasureSpec.getSize(heightMeasureSpec);
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
-        super.draw(canvas);
+        super.onDraw(canvas);
         canvas.drawColor(bgColor);
         drawCalibration(canvas);
         drawTriangle(canvas);
@@ -255,7 +251,6 @@ public class TapeView extends View {
                 changeMoveAndValue();
                 break;
             case MotionEvent.ACTION_UP:
-            case MotionEvent.ACTION_CANCEL:
                 countMoveEnd();
                 countVelocityTracker();
                 return false;
