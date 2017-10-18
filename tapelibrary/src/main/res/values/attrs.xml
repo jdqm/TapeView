@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="TapeView">
+        <attr name="bgColor" format="color|reference"></attr>
+
+        <attr name="calibrationColor" format="color|reference"></attr>
+        <attr name="calibrationWidth" format="dimension|reference"></attr>
+        <attr name="calibrationHeight" format="dimension|reference"></attr>
+
+        <attr name="triangleColor" format="string|reference"></attr>
+        <attr name="triangleHeight" format="dimension|reference"></attr>
+
+        <attr name="textColor" format="color|reference"></attr>
+        <attr name="textSize" format="dimension|reference"></attr>
+
+        <!--每一隔的所代表的数值-->
+        <attr name="per" format="float|reference"></attr>
+        <attr name="gapWidth" format="dimension|reference"></attr>
+        <attr name="minValue" format="float"></attr>
+        <attr name="maxValue" format="float"></attr>
+        <attr name="value" format="float"></attr>
+    </declare-styleable>
+</resources>
