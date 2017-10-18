@@ -53,13 +53,13 @@ public class TapeView extends View {
     private int middle;
 
     //刻度尺最小值
-    private float minValue;
+    private float minValue = 0;
 
     //最大值
-    private float maxValue;
+    private float maxValue = 100;
 
     //刻度尺当前值
-    private float value;
+    private float value = 0;
 
     //每一格代表的值
     private float per = 1;
