@@ -28,6 +28,23 @@
   public void setValue(float value, float minValue, float maxValue, float per, int perCount)
  ```
  
+ 回调接口
+ 
+ ```
+ tapeHeight.setOnValueChangeListener(new TapeView.OnValueChangeListener() {
+    @Override
+    public void onChange(float value) {
+        //todo
+    }
+});
+```
+ 
+获取获取当前值接口
+
+```
+tapeHeight.getValue()
+```
+ 
 # 2、支持哪些自定义属性
 
 |name|说明|format|默认值|
