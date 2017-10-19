@@ -2,7 +2,7 @@
 
 ![漂亮的卷尺效果](https://raw.githubusercontent.com/jdqm/TapeView/master/tapeView.gif)
 
-# 1、Usege
+# 1、使用
 
 ```
 <com.jdqm.tapelibrary.TapeView
