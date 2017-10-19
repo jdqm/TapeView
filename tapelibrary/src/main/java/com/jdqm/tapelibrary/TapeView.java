@@ -166,6 +166,15 @@ public class TapeView extends View {
     }
 
 
+    /**
+     * 初始化配置参数
+     *
+     * @param value 当前值
+     * @param minValue 最小值
+     * @param maxValue 最大值
+     * @param per 每一隔所代表的值
+     * @param perCount 相邻两条长刻度线之间被分成的隔数量
+     */
     public void setValue(float value, float minValue, float maxValue, float per, int perCount) {
         this.value = value;
         this.minValue = minValue;
