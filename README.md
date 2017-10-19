@@ -49,6 +49,6 @@
 |value|当前值|float|0|
 
 # 3、实现原理分析博客
-[实现原理http://www.jianshu.com/p/06e65ef3f3f1][1]
+[http://www.jianshu.com/p/06e65ef3f3f1][1]
 
 [1]: http://www.jianshu.com/p/06e65ef3f3f1
