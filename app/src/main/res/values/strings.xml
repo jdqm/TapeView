@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">TapeView</string>
+    <string name="cm"> 厘米</string>
+    <string name="kg"> 公斤</string>
+    <string name="weight">今日体重</string>
+    <string name="height">身高</string>
 </resources>

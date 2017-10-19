@@ -10,13 +10,13 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="今日体重"
+        android:text="@string/weight"
         android:textColor="#333333"
         android:textSize="24sp" />
 
     <TextView
         android:layout_marginTop="10dp"
-        android:id="@+id/tvValue"
+        android:id="@+id/tvWeight"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -25,7 +25,7 @@
 
     <com.jdqm.tapelibrary.TapeView
         android:layout_marginTop="20dp"
-        android:id="@+id/tapeView"
+        android:id="@+id/tapeWeight"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:calibrationWidth="1dp"
@@ -33,5 +33,32 @@
         app:minValue="40"
         app:per="0.1"
         app:value="90" />
+
+    <TextView
+        android:layout_marginTop="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/height"
+        android:textColor="#333333"
+        android:textSize="24sp" />
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:id="@+id/tvHeight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="#60cd74"
+        android:textSize="20sp" />
+
+    <com.jdqm.tapelibrary.TapeView
+        android:layout_marginTop="20dp"
+        android:id="@+id/tapeHeight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:calibrationWidth="1dp"
+        app:maxValue="230"
+        app:minValue="100"
+        app:value="164" />
 
 </LinearLayout>

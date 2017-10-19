@@ -10,22 +10,39 @@ public class MainActivity extends Activity implements TapeView.OnValueChangeList
 
     private static final String TAG = "MainActivity";
 
-    TextView textView;
-    TapeView tapeView;
+    private TextView tvWeight;
+    private TextView tvHeight;
+    private TapeView tapeWeight;
+    private TapeView tapeHeight;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        textView = findViewById(R.id.tvValue);
-        tapeView = findViewById(R.id.tapeView);
-        tapeView.setOnValueChangeListener(this);
+        initViews();
+
+        tapeWeight.setOnValueChangeListener(this);
+        tapeHeight.setOnValueChangeListener(new TapeView.OnValueChangeListener() {
+            @Override
+            public void onChange(float value) {
+                tvHeight.setText(value + " " + getString(R.string.cm));
+            }
+        });
+
         //tapeView.setValue(65, 40.7f, 200, 0.1f, 10);
-        textView.setText(tapeView.getValue() + " 公斤");
+        tvWeight.setText(tapeWeight.getValue() + " " + getString(R.string.kg));
+        tvHeight.setText(tapeHeight.getValue() + " " + getString(R.string.cm));
+    }
+
+    private void initViews() {
+        tvWeight = findViewById(R.id.tvWeight);
+        tvHeight = findViewById(R.id.tvHeight);
+        tapeWeight = findViewById(R.id.tapeWeight);
+        tapeHeight = findViewById(R.id.tapeHeight);
     }
 
     @Override
     public void onChange(float value) {
-        textView.setText(value + "公斤");
+        tvWeight.setText(value + " " + getString(R.string.kg));
     }
 }

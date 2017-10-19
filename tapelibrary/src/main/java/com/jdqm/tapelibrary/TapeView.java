@@ -247,6 +247,9 @@ public class TapeView extends View {
                 height = calibrationLong;
 
                 value = String.valueOf(minValue + left * per / 10.0f);
+                if (value.endsWith(".0")) {
+                    value = value.substring(0, value.length()-2);
+                }
                 paint.setColor(textColor);
                 canvas.drawText(value, currentCalibration - paint.measureText(value) / 2, textY, paint);
             } else {
@@ -276,12 +279,13 @@ public class TapeView extends View {
                 dx = 0;
                 break;
             case MotionEvent.ACTION_MOVE:
+                Log.d(TAG, "onTouchEvent: " + x);
                 dx = lastX - x;
                 validateValue();
                 break;
             case MotionEvent.ACTION_UP:
                 smoothMoveToCalibration();
-                computeVelocity();
+                calculateVelocity();
                 return false;
             default:
                 return false;
@@ -312,7 +316,10 @@ public class TapeView extends View {
     }
 
 
-    private void computeVelocity() {
+    /**
+     * 计算水平速度 像素/秒
+     */
+    private void calculateVelocity() {
         velocityTracker.computeCurrentVelocity(1000);
         float xVelocity = velocityTracker.getXVelocity(); //计算水平方向的速度（单位秒）
         Log.d(TAG, "xVelocity: " + xVelocity);
@@ -320,10 +327,14 @@ public class TapeView extends View {
         //大于这个值才会被认为是fling
         if (Math.abs(xVelocity) > minFlingVelocity) {
             scroller.fling(0, 0, (int) xVelocity, 0, Integer.MIN_VALUE, Integer.MAX_VALUE, 0, 0);
+            invalidate();
         }
     }
 
 
+    /**
+     * 根据滑动距离，重新计算offset，注意它的有效范围
+     */
     private void validateValue() {
         offset += dx;
         if (offset < 0) {
