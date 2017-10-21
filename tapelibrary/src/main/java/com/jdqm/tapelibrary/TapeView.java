@@ -132,10 +132,32 @@ public class TapeView extends View {
     }
 
     private void calculateAttr() {
+        verifyValues(minValue, value, maxValue);
         textY = calibrationLong + DisplayUtil.dp2px(30, mContext);
         offset = (value - minValue) * 10.0f / per * gapWidth;
         maxOffset = (maxValue - minValue) * 10.0f / per * gapWidth;
         totalCalibration = (int) ((maxValue - minValue) * 10.0f / per + 1);
+    }
+
+    /**
+     * 修正minValue，value，maxValue 的有效性
+     *
+     * @param minValue
+     * @param value
+     * @param maxValue
+     */
+    private void verifyValues(float minValue, float value, float maxValue) {
+        if (minValue > maxValue) {
+            this.minValue = maxValue;
+        }
+
+        if (value < minValue) {
+            this.value = minValue;
+        }
+
+        if (value > maxValue) {
+            this.value = maxValue;
+        }
     }
 
     /**
