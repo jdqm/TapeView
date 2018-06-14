@@ -2,8 +2,13 @@
 
 ![漂亮的卷尺效果](https://raw.githubusercontent.com/jdqm/TapeView/master/tapeView.gif)
 
-# 1、使用
+# 下载
 
+```
+implementation 'com.jdqm.tapelibrary:tapelibrary:1.0.0'
+```
+
+# 使用
 ```
 <com.jdqm.tapelibrary.TapeView
     android:layout_width="match_parent"
@@ -45,7 +50,7 @@
 tapeHeight.getValue()
 ```
  
-# 2、支持哪些自定义属性
+# 自定义属性
 
 |name|说明|format|默认值|
 |:--|:--|:--|:--:|
@@ -65,7 +70,7 @@ tapeHeight.getValue()
 |maxValue|刻度之间的最大值|float|100|
 |value|当前值|float|0|
 
-# 3、实现原理分析博客
+# 实现原理分析
 [http://www.jianshu.com/p/06e65ef3f3f1][1]
 
 [1]: http://www.jianshu.com/p/06e65ef3f3f1
