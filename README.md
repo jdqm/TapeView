@@ -44,7 +44,7 @@ implementation 'com.jdqm.tapelibrary:tapelibrary:1.0.0'
 });
 ```
  
-获取获取当前值接口
+获取当前值接口
 
 ```
 tapeHeight.getValue()
